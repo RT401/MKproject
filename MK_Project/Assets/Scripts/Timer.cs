@@ -41,4 +41,12 @@ public class Timer : MonoBehaviour
     {
         displayedTimer.text = currentTimer.ToString("00" + " Seconds");
     }
+
+    public void activateTimer(bool insertedBool)
+    {
+        displayTimer = insertedBool;
+        timerRunning = insertedBool;
+        displayedTimer.gameObject.SetActive(insertedBool);
+        currentTimer = maxTimer;
+    }
 }

@@ -8,15 +8,19 @@ public class Leaderboard : MonoBehaviour
     public List<string> Questions;
     public List<string> Answers;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// End game score and completed
+    public int AmountCompleted;
+    public int AmountCorrect;
 
-    // Update is called once per frame
-    void Update()
+    public void CheckQA()
     {
-        
+        for (int i = 0; i < Questions.Count; i++)
+        {
+            AmountCompleted++;
+            if (Questions[i] == Answers[i])
+            {
+                AmountCorrect++;
+            }
+        }
     }
 }

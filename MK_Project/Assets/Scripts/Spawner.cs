@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
+    Leaderboard leaderboard = FindObjectOfType<Leaderboard>();
+    Timer timer = FindObjectOfType<Timer>();
+
     public enum colours
     {
         Red,
@@ -21,7 +24,6 @@ public class Spawner : MonoBehaviour
 
     public void startGame()
     {
-        Leaderboard leaderboard = FindObjectOfType<Leaderboard>();
         // emptys last games score ready for the new game
         leaderboard.Answers.Clear();
         leaderboard.Questions.Clear();
@@ -30,10 +32,7 @@ public class Spawner : MonoBehaviour
         updateAnswers();
 
         // setup timer to start
-        Timer timer = FindObjectOfType<Timer>();
-        timer.displayTimer = true;
-        timer.timerRunning = true;
-        timer.displayedTimer.gameObject.SetActive(true);
+        timer.activateTimer(true);
     }
 
     public void continueGame()
@@ -61,6 +60,11 @@ public class Spawner : MonoBehaviour
     public GameObject answer;
     public GameObject answerPrefab;
     public int amountOfAnswers = 0;
+
+    /// End Screne
+    public GameObject EndScreen;
+    public Text Correct;
+    public Text Completed;
 
     public void updateQuestions()
     {
@@ -100,5 +104,32 @@ public class Spawner : MonoBehaviour
             //instantiate the object
             Instantiate(answerPrefab, answer.transform);
         }
+    }
+
+    public void EndOfGame()
+    {
+        /// turns timer off and resets for next game
+        timer.activateTimer(false);
+
+        /// Sets the parent of QuestionText to inactive
+        questionText.gameObject.transform.parent.gameObject.SetActive(false);
+
+        /// Removes all children from answer
+        int answersChildCount = answer.transform.childCount;
+        for (int i = 0; i < answersChildCount; i++)
+        {
+            // destroys all previous answers
+            Destroy(answer.transform.GetChild(i).gameObject);
+        }
+
+        /// Sets the answer gameobject to inactive 
+        answer.SetActive(false);
+
+        leaderboard.CheckQA();
+
+        /// Sets the Ending screen to active
+        EndScreen.SetActive(true);
+
+
     }
 }   
