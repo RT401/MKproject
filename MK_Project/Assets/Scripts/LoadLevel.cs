@@ -62,13 +62,23 @@ public class LoadLevel : MonoBehaviour
     public void FindLevel(string chosenLevel)
     {
         if (chosenLevel == Easy.name)
+        {
             Startlevel(Easy);
+            Easy.GetComponent<Spawner>().amountOfAnswers = 2f;
+        }
 
         if (chosenLevel == Normal.name)
+        {
             Startlevel(Normal);
+            Normal.GetComponent<Spawner>().amountOfAnswers = 3f;
+        }
+
 
         if (chosenLevel == Hard.name)
+        {
             Startlevel(Hard);
+            Hard.GetComponent<Spawner>().amountOfAnswers = 4f;
+        }
     }
 
 

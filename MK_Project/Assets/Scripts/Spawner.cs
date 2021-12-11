@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class Spawner : MonoBehaviour
     public GameObject answer;
 
     public GameObject answerPrefab;
+
+    public float amountOfAnswers = 0f;
+
+
+    public Text questionText;
 
     enum colours
     {
@@ -19,6 +25,9 @@ public class Spawner : MonoBehaviour
         White,
         Pink,
         Purple,
-        Green
+        Green,
+        Brown
     }
+
+
 }
