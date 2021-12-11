@@ -19,7 +19,6 @@ public class Spawner : MonoBehaviour
         Brown
     }
 
-
     /// Questions
     public Text questionText;
     colours currentQuestion;
@@ -44,11 +43,13 @@ public class Spawner : MonoBehaviour
     public void updateAnswers()
     {
         /// randomise which instanciated object spawns the correct answer
+        /// requires the +1 because of Random.Range going from the first value to -1 of second value
         int randomAnswerLocation = Random.Range(1, (amountOfAnswers + 1));
 
         /// Instanciate the correct amount of answers with differnt colours in each one
         for (int i = 1; i <= amountOfAnswers; i++)
         {
+            /// randomise the text that appears in each answer box & ensure that one is always the correct answer
             if (i == randomAnswerLocation)
                 answerPrefab.transform.GetComponentInChildren<Text>().text = (currentQuestion.ToString());
             else
@@ -56,8 +57,9 @@ public class Spawner : MonoBehaviour
                 colours randomAnswer = (colours)Random.Range(0, 9);
                 answerPrefab.transform.GetComponentInChildren<Text>().text = randomAnswer.ToString();
             }
-
-           Instantiate(answerPrefab, answer.transform);
+            
+            //instantiate the object
+            Instantiate(answerPrefab, answer.transform);
         }
     }
 }   
