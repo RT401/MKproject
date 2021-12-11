@@ -1,0 +1,26 @@
+Mktest 
+	-pc & mobile
+	-kahoot style
+-----------
+main menu
+	-start - on click display easy/hard - hard = 3/ easy = 2 choices
+	-updated leaderboard
+-----------
+start
+	-actual test
+	-display screen showing rules and goal
+	-updating canvas
+	-prefabs for selected boxes
+	-Finish canvas at end to display score
+-----------
+scripts
+	-leaderboard
+	-timer
+	-checker - checks if colour click is same as enum spawned
+	-question spawner - enum colours, randomise word colour
+-----------
+leaderboard
+	-update on game finish
+	-most scored in 60 seconds & display H/E
+-----------
+
