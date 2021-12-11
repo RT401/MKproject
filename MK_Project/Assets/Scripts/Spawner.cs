@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject question;
+    public GameObject answer;
+
     public GameObject answerPrefab;
 
     enum colours
