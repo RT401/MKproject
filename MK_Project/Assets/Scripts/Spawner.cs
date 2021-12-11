@@ -65,7 +65,7 @@ public class Spawner : MonoBehaviour
     public void updateQuestions()
     {
         // randomises the colours enum to randomise the result
-        currentQuestion = (colours)Random.Range(0, 9);
+        currentQuestion = (colours)Random.Range(0, 10);
         questionText.text = currentQuestion.ToString();
 
         // randomises the background colour
