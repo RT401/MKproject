@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject question;
     public GameObject answer;
 
     public GameObject answerPrefab;
@@ -29,5 +28,14 @@ public class Spawner : MonoBehaviour
         Brown
     }
 
+    void updateQuestions()
+    {
+        // randomises the colours enum to randomise the result
+        colours cText = (colours)Random.Range(0, 9);
+        questionText.text = cText.ToString();
 
+        // randomises the background colour
+        Color color = new Color(Random.value, Random.value, Random.value, 1f);
+        questionText.color = color;
+    }
 }
