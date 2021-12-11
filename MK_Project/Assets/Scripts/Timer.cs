@@ -34,6 +34,6 @@ public class Timer : MonoBehaviour
 
     public void DisplayTimer()
     {
-        displayedTimer.text = currentTimer.ToString("ss");
+        displayedTimer.text = currentTimer.ToString("ss" + " Seconds");
     }
 }
