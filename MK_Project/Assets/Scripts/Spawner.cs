@@ -87,7 +87,10 @@ public class Spawner : MonoBehaviour
                 answerPrefab.transform.GetComponentInChildren<Text>().text = (currentQuestion.ToString());
             else
             {
-                colours randomAnswer = (colours)Random.Range(0, 9);
+                /// Failsafe to ensure that both answers are not the same
+                colours randomAnswer = currentQuestion;
+                while (randomAnswer == currentQuestion) 
+                    randomAnswer = (colours)Random.Range(0, 9);
                 answerPrefab.transform.GetComponentInChildren<Text>().text = randomAnswer.ToString();
             }
 
