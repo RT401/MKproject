@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    enum colours
+    public enum colours
     {
         Red,
         Blue,
@@ -19,9 +19,20 @@ public class Spawner : MonoBehaviour
         Brown
     }
 
+    public void startGame()
+    {
+        Leaderboard leaderboard = FindObjectOfType<Leaderboard>();
+        // emptys last games score ready for the new game
+        leaderboard.Answers.Clear();
+        leaderboard.Questions.Clear();
+
+        updateQuestions();
+        updateAnswers();
+    }
+
     /// Questions
     public Text questionText;
-    colours currentQuestion;
+    public colours currentQuestion;
     Color currentColour;
 
     /// Answers
@@ -57,7 +68,10 @@ public class Spawner : MonoBehaviour
                 colours randomAnswer = (colours)Random.Range(0, 9);
                 answerPrefab.transform.GetComponentInChildren<Text>().text = randomAnswer.ToString();
             }
-            
+
+            // lets the instantiated object know what spawner it belongs to
+            answerPrefab.GetComponent<AnswerSelect>().gameSpawner = this;
+
             //instantiate the object
             Instantiate(answerPrefab, answer.transform);
         }

@@ -1515,6 +1515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionText: {fileID: 1844260372}
+  currentQuestion: 0
   answer: {fileID: 437360386}
   answerPrefab: {fileID: 5434400451312957381, guid: 5408d3dc51b653c449dfc8d76c588a15, type: 3}
   amountOfAnswers: 0
@@ -3206,19 +3207,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 972874837}
         m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
-        m_MethodName: updateQuestions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 972874837}
-        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
-        m_MethodName: updateAnswers
+        m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3395,6 +3384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19df0a2a85b2c164e96c0716f10b79bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Questions: []
+  Answers: []
 --- !u!114 &2113334821
 MonoBehaviour:
   m_ObjectHideFlags: 0
