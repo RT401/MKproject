@@ -30,10 +30,15 @@ public class Timer : MonoBehaviour
 
         if (timerRunning == true)
             currentTimer -= Time.deltaTime;
+
+        if(currentTimer <= 0)
+        {
+            // stop gameplay loop and display endscreen
+        }
     }
 
     public void DisplayTimer()
     {
-        displayedTimer.text = currentTimer.ToString("ss" + " Seconds");
+        displayedTimer.text = currentTimer.ToString("00" + " Seconds");
     }
 }

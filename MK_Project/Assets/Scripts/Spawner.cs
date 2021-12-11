@@ -28,6 +28,28 @@ public class Spawner : MonoBehaviour
 
         updateQuestions();
         updateAnswers();
+
+        // setup timer to start
+        Timer timer = FindObjectOfType<Timer>();
+        timer.displayTimer = true;
+        timer.timerRunning = true;
+        timer.displayedTimer.gameObject.SetActive(true);
+    }
+
+    public void continueGame()
+    {
+        /// Goes through each of the answers children and destroys the objects to reset the game
+        int answersChildCount = answer.transform.childCount;
+        for (int i = 0; i < answersChildCount; i++)
+        {
+            // destroys all previous answers
+            Destroy(answer.transform.GetChild(i).gameObject);
+        }
+
+        /// update question then update answer
+        /// to ensure that the answers will work with the question
+        updateQuestions();
+        updateAnswers();
     }
 
     /// Questions
