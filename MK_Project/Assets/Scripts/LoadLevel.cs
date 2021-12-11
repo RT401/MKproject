@@ -64,20 +64,20 @@ public class LoadLevel : MonoBehaviour
         if (chosenLevel == Easy.name)
         {
             Startlevel(Easy);
-            Easy.GetComponent<Spawner>().amountOfAnswers = 2f;
+            Easy.GetComponent<Spawner>().amountOfAnswers = 2;
         }
 
         if (chosenLevel == Normal.name)
         {
             Startlevel(Normal);
-            Normal.GetComponent<Spawner>().amountOfAnswers = 3f;
+            Normal.GetComponent<Spawner>().amountOfAnswers = 3;
         }
 
 
         if (chosenLevel == Hard.name)
         {
             Startlevel(Hard);
-            Hard.GetComponent<Spawner>().amountOfAnswers = 4f;
+            Hard.GetComponent<Spawner>().amountOfAnswers = 4;
         }
     }
 

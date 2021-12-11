@@ -5,15 +5,6 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject answer;
-
-    public GameObject answerPrefab;
-
-    public float amountOfAnswers = 0f;
-
-
-    public Text questionText;
-
     enum colours
     {
         Red,
@@ -28,14 +19,45 @@ public class Spawner : MonoBehaviour
         Brown
     }
 
-    void updateQuestions()
+
+    /// Questions
+    public Text questionText;
+    colours currentQuestion;
+    Color currentColour;
+
+    /// Answers
+    public GameObject answer;
+    public GameObject answerPrefab;
+    public int amountOfAnswers = 0;
+
+    public void updateQuestions()
     {
         // randomises the colours enum to randomise the result
-        colours cText = (colours)Random.Range(0, 9);
-        questionText.text = cText.ToString();
+        currentQuestion = (colours)Random.Range(0, 9);
+        questionText.text = currentQuestion.ToString();
 
         // randomises the background colour
-        Color color = new Color(Random.value, Random.value, Random.value, 1f);
-        questionText.color = color;
+        currentColour = new Color(Random.value, Random.value, Random.value, 1f);
+        questionText.color = currentColour;
     }
-}
+
+    public void updateAnswers()
+    {
+        /// randomise which instanciated object spawns the correct answer
+        int randomAnswerLocation = Random.Range(1, (amountOfAnswers + 1));
+
+        /// Instanciate the correct amount of answers with differnt colours in each one
+        for (int i = 1; i <= amountOfAnswers; i++)
+        {
+            if (i == randomAnswerLocation)
+                answerPrefab.transform.GetComponentInChildren<Text>().text = (currentQuestion.ToString());
+            else
+            {
+                colours randomAnswer = (colours)Random.Range(0, 9);
+                answerPrefab.transform.GetComponentInChildren<Text>().text = randomAnswer.ToString();
+            }
+
+           Instantiate(answerPrefab, answer.transform);
+        }
+    }
+}   
