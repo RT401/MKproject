@@ -1576,7 +1576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &972874833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,6 +1680,8 @@ MonoBehaviour:
   answerPrefab: {fileID: 5434400451312957381, guid: 5408d3dc51b653c449dfc8d76c588a15, type: 3}
   amountOfAnswers: 0
   EndScreen: {fileID: 1514474156}
+  Correct: {fileID: 0}
+  Completed: {fileID: 0}
 --- !u!1 &1084181489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1457143811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2683,7 +2685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1514474157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3003,7 +3005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1712208589
 MonoBehaviour:
   m_ObjectHideFlags: 0

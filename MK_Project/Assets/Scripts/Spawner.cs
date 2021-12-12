@@ -5,9 +5,14 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    Leaderboard leaderboard = FindObjectOfType<Leaderboard>();
-    Timer timer = FindObjectOfType<Timer>();
+    Leaderboard leaderboard;
+    Timer timer;
 
+    private void Start()
+    {
+        leaderboard = FindObjectOfType<Leaderboard>();
+        timer = FindObjectOfType<Timer>();
+    }
     public enum colours
     {
         Red,
