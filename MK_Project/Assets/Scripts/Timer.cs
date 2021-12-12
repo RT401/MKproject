@@ -16,6 +16,9 @@ public class Timer : MonoBehaviour
     // Timer spawn location
     public Text displayedTimer;
 
+    // Current level spawner
+    Spawner currentSpawner;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +36,18 @@ public class Timer : MonoBehaviour
 
         if(currentTimer <= 0)
         {
+            Spawner[] spawner = FindObjectsOfType<Spawner>();
+
+            foreach(Spawner sp in spawner)
+            {
+                if(sp.isActiveAndEnabled == true)
+                {
+                    currentSpawner = sp;
+                }
+            }
+            
             // stop gameplay loop and display endscreen
+            currentSpawner.EndOfGame();
         }
     }
 
@@ -42,7 +56,7 @@ public class Timer : MonoBehaviour
         displayedTimer.text = currentTimer.ToString("00" + " Seconds");
     }
 
-    public void activateTimer(bool insertedBool)
+    public void ActivateTimer(bool insertedBool)
     {
         displayTimer = insertedBool;
         timerRunning = insertedBool;

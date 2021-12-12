@@ -7,12 +7,6 @@ public class Spawner : MonoBehaviour
 {
     Leaderboard leaderboard;
     Timer timer;
-
-    private void Start()
-    {
-        leaderboard = FindObjectOfType<Leaderboard>();
-        timer = FindObjectOfType<Timer>();
-    }
     public enum colours
     {
         Red,
@@ -27,35 +21,6 @@ public class Spawner : MonoBehaviour
         Brown
     }
 
-    public void startGame()
-    {
-        // emptys last games score ready for the new game
-        leaderboard.Answers.Clear();
-        leaderboard.Questions.Clear();
-
-        updateQuestions();
-        updateAnswers();
-
-        // setup timer to start
-        timer.activateTimer(true);
-    }
-
-    public void continueGame()
-    {
-        /// Goes through each of the answers children and destroys the objects to reset the game
-        int answersChildCount = answer.transform.childCount;
-        for (int i = 0; i < answersChildCount; i++)
-        {
-            // destroys all previous answers
-            Destroy(answer.transform.GetChild(i).gameObject);
-        }
-
-        /// update question then update answer
-        /// to ensure that the answers will work with the question
-        updateQuestions();
-        updateAnswers();
-    }
-
     /// Questions
     public Text questionText;
     public colours currentQuestion;
@@ -67,11 +32,46 @@ public class Spawner : MonoBehaviour
     public int amountOfAnswers = 0;
 
     /// End Screne
-    public GameObject EndScreen;
-    public Text Correct;
-    public Text Completed;
+    public GameObject endScreen;
+    public Text correctText;
+    public Text compleatedText;
 
-    public void updateQuestions()
+    private void Start()
+    {
+        leaderboard = FindObjectOfType<Leaderboard>();
+        timer = FindObjectOfType<Timer>();
+    }
+
+    public void StartGame()
+    {
+        // emptys last games score ready for the new game
+        leaderboard.Answers.Clear();
+        leaderboard.Questions.Clear();
+
+        UpdatedQuestion();
+        UpdatedAnswer();
+
+        // setup timer to start
+        timer.ActivateTimer(true);
+    }
+
+    public void ContinueGame()
+    {
+        /// Goes through each of the answers children and destroys the objects to reset the game
+        int answersChildCount = answer.transform.childCount;
+        for (int i = 0; i < answersChildCount; i++)
+        {
+            // destroys all previous answers
+            Destroy(answer.transform.GetChild(i).gameObject);
+        }
+
+        /// update question then update answer
+        /// to ensure that the answers will work with the question
+        UpdatedQuestion();
+        UpdatedAnswer();
+    }
+
+    public void UpdatedQuestion()
     {
         // randomises the colours enum to randomise the result
         currentQuestion = (colours)Random.Range(0, 10);
@@ -82,7 +82,7 @@ public class Spawner : MonoBehaviour
         questionText.color = currentColour;
     }
 
-    public void updateAnswers()
+    public void UpdatedAnswer()
     {
         /// randomise which instanciated object spawns the correct answer
         /// requires the +1 because of Random.Range going from the first value to -1 of second value
@@ -114,7 +114,7 @@ public class Spawner : MonoBehaviour
     public void EndOfGame()
     {
         /// turns timer off and resets for next game
-        timer.activateTimer(false);
+        timer.ActivateTimer(false);
 
         /// Sets the parent of QuestionText to inactive
         questionText.gameObject.transform.parent.gameObject.SetActive(false);
@@ -133,8 +133,9 @@ public class Spawner : MonoBehaviour
         leaderboard.CheckQA();
 
         /// Sets the Ending screen to active
-        EndScreen.SetActive(true);
+        endScreen.SetActive(true);
 
-
+        compleatedText.text = ("You compleated " + leaderboard.amountCompleated.ToString());
+        correctText.text = ("You got " + leaderboard.amountCorrect.ToString() + " correct");
     }
 }   

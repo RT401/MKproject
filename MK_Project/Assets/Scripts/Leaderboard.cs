@@ -9,17 +9,17 @@ public class Leaderboard : MonoBehaviour
     public List<string> Answers;
 
     /// End game score and completed
-    public int AmountCompleted;
-    public int AmountCorrect;
+    public int amountCompleated;
+    public int amountCorrect;
 
     public void CheckQA()
     {
         for (int i = 0; i < Questions.Count; i++)
         {
-            AmountCompleted++;
+            amountCompleated++;
             if (Questions[i] == Answers[i])
             {
-                AmountCorrect++;
+                amountCorrect++;
             }
         }
     }

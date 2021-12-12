@@ -21,6 +21,6 @@ public class AnswerSelect : MonoBehaviour
         Leaderboard.Questions.Add(gameSpawner.currentQuestion.ToString());
         Leaderboard.Answers.Add(go.transform.GetComponentInChildren<Text>().text);
 
-        gameSpawner.continueGame();
+        gameSpawner.ContinueGame();
     }
 }
