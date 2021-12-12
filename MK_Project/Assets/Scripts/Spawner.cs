@@ -45,8 +45,7 @@ public class Spawner : MonoBehaviour
     public void StartGame()
     {
         // emptys last games score ready for the new game
-        leaderboard.Answers.Clear();
-        leaderboard.Questions.Clear();
+        leaderboard.ResetScores();
 
         UpdatedQuestion();
         UpdatedAnswer();

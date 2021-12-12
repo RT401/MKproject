@@ -23,4 +23,12 @@ public class Leaderboard : MonoBehaviour
             }
         }
     }
+
+    public void ResetScores()
+    {
+        Answers.Clear();
+        Questions.Clear();
+        amountCompleated = 0;
+        amountCorrect = 0;
+    }
 }
