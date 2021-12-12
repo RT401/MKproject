@@ -135,7 +135,7 @@ public class Spawner : MonoBehaviour
         /// Sets the Ending screen to active
         endScreen.SetActive(true);
 
-        compleatedText.text = ("You compleated " + leaderboard.amountCompleated.ToString());
+        compleatedText.text = ("You completed " + leaderboard.amountCompleated.ToString());
         correctText.text = ("You got " + leaderboard.amountCorrect.ToString() + " correct");
     }
 }   
