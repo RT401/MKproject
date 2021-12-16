@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    Leaderboard leaderboard;
+    ScoreHolder scoreHolder;
     Timer timer;
     public enum colours
     {
@@ -38,14 +38,14 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        leaderboard = FindObjectOfType<Leaderboard>();
+        scoreHolder = FindObjectOfType<ScoreHolder>();
         timer = FindObjectOfType<Timer>();
     }
 
     public void StartGame()
     {
         // emptys last games score ready for the new game
-        leaderboard.ResetScores();
+        scoreHolder.ResetScores();
 
         UpdatedQuestion();
         UpdatedAnswer();
@@ -129,12 +129,12 @@ public class Spawner : MonoBehaviour
         /// Sets the answer gameobject to inactive 
         answer.SetActive(false);
 
-        leaderboard.CheckQA();
+        scoreHolder.CheckQA();
 
         /// Sets the Ending screen to active
         endScreen.SetActive(true);
 
-        compleatedText.text = ("You completed " + leaderboard.amountCompleated.ToString());
-        correctText.text = ("You got " + leaderboard.amountCorrect.ToString() + " correct");
+        compleatedText.text = ("You completed " + scoreHolder.amountCompleated.ToString());
+        correctText.text = ("You got " + scoreHolder.amountCorrect.ToString() + " correct");
     }
 }   

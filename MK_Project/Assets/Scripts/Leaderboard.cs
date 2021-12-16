@@ -2,33 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Leaderboard : MonoBehaviour
+public class LeaderBoard : MonoBehaviour
 {
-    /// holds the ability to check scores when game is over
-    public List<string> Questions;
-    public List<string> Answers;
+    /// <summary>
+    /// required variables
+    /// 3 floats to store difficulty best scores
+    /// refernce to scoreHolder, difficultys, ClickOn fucntion
+    /// </summary>
+    public float easy = 0f;
+    public float normal = 0f;
+    public float hard = 0f;
 
-    /// End game score and completed
-    public int amountCompleated;
-    public int amountCorrect;
-
-    public void CheckQA()
+    public void DisplayScores()
+    { }
+    public void LevelComplete(GameObject go)
     {
-        for (int i = 0; i < Questions.Count; i++)
-        {
-            amountCompleated++;
-            if (Questions[i] == Answers[i])
-            {
-                amountCorrect++;
-            }
-        }
+        /// compare gameobject referenced to stored scores
+        /// check if score is lower or higher, update score if higher
     }
 
-    public void ResetScores()
-    {
-        Answers.Clear();
-        Questions.Clear();
-        amountCompleated = 0;
-        amountCorrect = 0;
+    void CheckScores(float prevScore, float newScore)
+    { 
+    
     }
 }

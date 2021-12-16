@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class AnswerSelect : MonoBehaviour
 {
-    Leaderboard Leaderboard;
+    ScoreHolder scoreHolder;
     public Spawner gameSpawner;
 
     // Start is called before the first frame update
     void Start()
     {
         // find the leaderboard object
-        Leaderboard = FindObjectOfType<Leaderboard>();
+        scoreHolder = FindObjectOfType<ScoreHolder>();
     }
 
     public void OnSelect(GameObject go)
     {
         /// Save the question and answer to a list to check at end for score (saved in 2 different list (one for question one for answer))
-        Leaderboard.Questions.Add(gameSpawner.currentQuestion.ToString());
-        Leaderboard.Answers.Add(go.transform.GetComponentInChildren<Text>().text);
+        scoreHolder.Questions.Add(gameSpawner.currentQuestion.ToString());
+        scoreHolder.Answers.Add(go.transform.GetComponentInChildren<Text>().text);
 
         gameSpawner.ContinueGame();
     }
