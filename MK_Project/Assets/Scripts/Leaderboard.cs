@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeaderBoard : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class LeaderBoard : MonoBehaviour
     /// refernce to scoreHolder, difficultys, ClickOn fucntion
     /// </summary>
     public ScoreHolder SH;
+
+    public Text easyText;
+    public Text normalText;
+    public Text hardText;
 
     /// <summary>
     /// Scores array is stored as followed
@@ -26,7 +31,7 @@ public class LeaderBoard : MonoBehaviour
     /// B = compleated
     /// </summary>
 
-    public float[,] Scores;
+    public float?[,] Scores;
     public float[,] newScores;
 
     private void Start()
@@ -34,8 +39,20 @@ public class LeaderBoard : MonoBehaviour
         SH = FindObjectOfType<ScoreHolder>();
     }
 
-    public void DisplayScores()
+    public void UpdateDisplayScores(GameObject go)
     {
+        if (go.name == "Easy" && easyText != null)
+        {
+            easyText.text = (Scores[0, 0].ToString() + " / " + Scores[0, 1].ToString()); 
+        }
+        else if (go.name == "Normal" && normalText != null)
+        {
+            normalText.text = (Scores[1, 0].ToString() + " / " + Scores[1, 1].ToString());
+        }
+        else if (go.name == "Hard" && hardText != null)
+        {
+            hardText.text = (Scores[2, 0].ToString() + " / " + Scores[2, 1].ToString());
+        }
     }
 
     public void LevelComplete(GameObject go)
@@ -46,7 +63,7 @@ public class LeaderBoard : MonoBehaviour
         CheckScores(go);
 
         /// Dispay Scores on menu
-        DisplayScores();
+        UpdateDisplayScores(go);
     }
 
     void CheckScores(GameObject go)
@@ -55,7 +72,7 @@ public class LeaderBoard : MonoBehaviour
 
         if (go.name == "Easy")
         {
-            if (Scores[0, 0] == 0)
+            if (Scores[0,1] == null)
             {
                 Scores[0, 0] = newScores[0, 0];
                 Scores[0, 1] = newScores[0, 1];
@@ -88,7 +105,7 @@ public class LeaderBoard : MonoBehaviour
         }
         else if (go.name == "Normal")
         {
-            if (Scores[1, 0] == 0)
+            if (Scores[1, 1] == null)
             {
                 Scores[1, 0] = newScores[0, 0];
                 Scores[1, 1] = newScores[0, 1];
@@ -121,7 +138,7 @@ public class LeaderBoard : MonoBehaviour
         }
         else if (go.name == "Hard")
         {
-            if (Scores[2, 0] == 0)
+            if (Scores[2,1] == null)
             {
                 Scores[2, 0] = newScores[0, 0];
                 Scores[2, 1] = newScores[0, 1];

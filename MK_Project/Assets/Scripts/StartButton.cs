@@ -11,6 +11,7 @@ public class StartButton : MonoBehaviour
     public Button hard;
     public Button quit_1;
     public Button quit_2;
+    public GameObject LeaderboardText;
 
     public void ClickOn()
     {
@@ -24,6 +25,8 @@ public class StartButton : MonoBehaviour
             quit_1.gameObject.SetActive(false);
         if (quit_2 != null)
             quit_2.gameObject.SetActive(true);
+        if (LeaderboardText != null)
+            LeaderboardText.SetActive(true);
     }
 
     public void GameStart()
@@ -36,6 +39,8 @@ public class StartButton : MonoBehaviour
             hard.gameObject.SetActive(false);
         if (quit_2 != null)
             quit_2.gameObject.SetActive(false);
+        if (LeaderboardText != null)
+            LeaderboardText.SetActive(false);
         if (quit_1 != null)
             quit_1.gameObject.SetActive(true);
     }

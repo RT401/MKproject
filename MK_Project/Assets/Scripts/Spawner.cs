@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Spawner : MonoBehaviour
 {
     ScoreHolder scoreHolder;
+    public LeaderBoard LB;
     Timer timer;
     public enum colours
     {
@@ -40,6 +41,7 @@ public class Spawner : MonoBehaviour
     {
         scoreHolder = FindObjectOfType<ScoreHolder>();
         timer = FindObjectOfType<Timer>();
+        LB = FindObjectOfType<LeaderBoard>();
     }
 
     public void StartGame()
@@ -130,6 +132,8 @@ public class Spawner : MonoBehaviour
         answer.SetActive(false);
 
         scoreHolder.CheckQA();
+
+        LB.LevelComplete(this.gameObject);
 
         /// Sets the Ending screen to active
         endScreen.SetActive(true);
