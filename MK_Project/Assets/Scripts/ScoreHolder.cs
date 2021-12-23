@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScoreHolder : MonoBehaviour
 {
+    public LeaderBoard LB;
+
     /// holds the ability to check scores when game is over
     public List<string> Questions;
     public List<string> Answers;
@@ -11,6 +13,11 @@ public class ScoreHolder : MonoBehaviour
     /// End game score and completed
     public int amountCompleated;
     public int amountCorrect;
+
+    private void Start()
+    {
+        LB = FindObjectOfType<LeaderBoard>();
+    }
 
     public void CheckQA()
     {
@@ -22,6 +29,8 @@ public class ScoreHolder : MonoBehaviour
                 amountCorrect++;
             }
         }
+
+        LB.newScores = new float[amountCorrect, amountCompleated];
     }
 
     public void ResetScores()
