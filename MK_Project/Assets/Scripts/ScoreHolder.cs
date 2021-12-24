@@ -30,7 +30,10 @@ public class ScoreHolder : MonoBehaviour
             }
         }
 
-        LB.newScores = new float[amountCorrect, amountCompleated];
+        LB.newScores = new float[1, 2];
+        /// Stores values with [0,0] as amount correct and [0,1] as completed to match the leaderboard scores
+        LB.newScores[0, 0] = amountCorrect;
+        LB.newScores[0, 1] = amountCompleated;
     }
 
     public void ResetScores()

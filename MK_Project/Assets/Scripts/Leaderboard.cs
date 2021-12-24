@@ -32,63 +32,102 @@ public class LeaderBoard : MonoBehaviour
     /// </summary>
 
     public float?[,] Scores;
+    
+    /// <summary>
+    /// stored as 
+    ///     0   1
+    /// 0   a   b
+    /// 
+    /// key
+    /// A = amount correct
+    /// b = amount completed
+    /// </summary>
     public float[,] newScores;
 
     private void Start()
     {
         SH = FindObjectOfType<ScoreHolder>();
-    }
+        Scores = new float?[3, 2];
+    }             
 
-    public void UpdateDisplayScores(GameObject go)
+    public void UpdateDisplayScores(string name)
     {
-        if (go.name == "Easy" && easyText != null)
+        if (name == "Easy" && easyText != null)
         {
             easyText.text = (Scores[0, 0].ToString() + " / " + Scores[0, 1].ToString()); 
         }
-        else if (go.name == "Normal" && normalText != null)
+        else if (name == "Normal" && normalText != null)
         {
             normalText.text = (Scores[1, 0].ToString() + " / " + Scores[1, 1].ToString());
         }
-        else if (go.name == "Hard" && hardText != null)
+        else if (name == "Hard" && hardText != null)
         {
             hardText.text = (Scores[2, 0].ToString() + " / " + Scores[2, 1].ToString());
         }
     }
 
-    public void LevelComplete(GameObject go)
+    public void LevelComplete(Spawner spwner)
     {
+
+        string tempName = spwner.gameObject.name;
         /// compare gameobject referenced to stored scores
 
         /// check if score is lower or higher, update score if higher and better correct rate
-        CheckScores(go);
+        CheckScores(tempName);
 
         /// Dispay Scores on menu
-        UpdateDisplayScores(go);
+        UpdateDisplayScores(tempName);
     }
 
-    void CheckScores(GameObject go)
+    void CheckScores(string name)
     {
-        //check the name of the gameobect to decide which score to check
-
-        if (go.name == "Easy")
+        /// Scoped back for first lot of major tests, will expand upon after feedback
+        if (name == "Easy")
         {
-            if (Scores[0,1] == null)
+            Scores[0, 0] = newScores[0, 0];
+            Scores[0, 1] = newScores[0, 1];
+            ClearNewScores();
+        }
+        else if (name == "Normal")
+        {
+            Scores[1, 0] = newScores[0, 0];
+            Scores[1, 1] = newScores[0, 1];
+            ClearNewScores();
+        }
+        else if (name == "Hard")
+        {
+            Scores[2, 0] = newScores[0, 0];
+            Scores[2, 1] = newScores[0, 1];
+            ClearNewScores();
+        }
+
+            /*
+            //check the name of the gameobect to decide which score to check
+            if (name == "Easy")
             {
-                Scores[0, 0] = newScores[0, 0];
-                Scores[0, 1] = newScores[0, 1];
-                ClearNewScores();
-            }
-            else
-            {
-                //check if the amout scored is better or worse
-                if (newScores[0, 0] < Scores[0, 0])
+                if (Scores[0,1] == 0 && Scores[0, 0] == 0)
                 {
-                    //Now check if the percentage correct is greater than 50% to stop spamers
-                    if (newScores[0, 0] / newScores[0, 1] > 0.5f)
+                    Scores[0, 0] = newScores[0, 0];
+                    Scores[0, 1] = newScores[0, 1];
+                    ClearNewScores();
+                }
+                else
+                {
+                    //check if the amout scored is better or worse
+                    if (newScores[0, 0] > Scores[0, 0])
                     {
-                        Scores[0, 0] = newScores[0, 0];
-                        Scores[0, 1] = newScores[0, 1];
-                        ClearNewScores();
+                        //Now check if the percentage correct is greater than 50% to stop spamers
+                        if (newScores[0, 0] / newScores[0, 1] > 0.5f)
+                        {
+                            Scores[0, 0] = newScores[0, 0];
+                            Scores[0, 1] = newScores[0, 1];
+                            ClearNewScores();
+                        }
+                        else
+                        {
+                            Debug.Log("no Change");
+                            ClearNewScores();
+                        }
                     }
                     else
                     {
@@ -96,32 +135,32 @@ public class LeaderBoard : MonoBehaviour
                         ClearNewScores();
                     }
                 }
-                else
+            }
+            else if (name == "Normal")
+            {
+                if (Scores[1, 1] == 0 && Scores[0, 0] == 0)
                 {
-                    Debug.Log("no Change");
+                    Scores[1, 0] = newScores[0, 0];
+                    Scores[1, 1] = newScores[0, 1];
                     ClearNewScores();
                 }
-            }
-        }
-        else if (go.name == "Normal")
-        {
-            if (Scores[1, 1] == null)
-            {
-                Scores[1, 0] = newScores[0, 0];
-                Scores[1, 1] = newScores[0, 1];
-                ClearNewScores();
-            }
-            else
-            {
-                //check if the amout scored is better or worse
-                if (newScores[0, 0] < Scores[1, 0])
+                else
                 {
-                    //Now check if the percentage correct is greater than 50% to stop spamers
-                    if (newScores[0, 0] / newScores[0, 1] > 0.5f)
+                    //check if the amout scored is better or worse
+                    if (newScores[0, 0] > Scores[1, 0])
                     {
-                        Scores[1, 0] = newScores[0, 0];
-                        Scores[1, 1] = newScores[0, 1];
-                        ClearNewScores();
+                        //Now check if the percentage correct is greater than 50% to stop spamers
+                        if (newScores[0, 0] / newScores[0, 1] > 0.5f)
+                        {
+                            Scores[1, 0] = newScores[0, 0];
+                            Scores[1, 1] = newScores[0, 1];
+                            ClearNewScores();
+                        }
+                        else
+                        {
+                            Debug.Log("no Change");
+                            ClearNewScores();
+                        }
                     }
                     else
                     {
@@ -129,54 +168,49 @@ public class LeaderBoard : MonoBehaviour
                         ClearNewScores();
                     }
                 }
-                else
+            }
+            else if (name == "Hard")
+            {
+                if (Scores[2,1] == 0 && Scores[0, 0] == 0)
                 {
-                    Debug.Log("no Change");
+                    Scores[2, 0] = newScores[0, 0];
+                    Scores[2, 1] = newScores[0, 1];
                     ClearNewScores();
                 }
-            }
-        }
-        else if (go.name == "Hard")
-        {
-            if (Scores[2,1] == null)
-            {
-                Scores[2, 0] = newScores[0, 0];
-                Scores[2, 1] = newScores[0, 1];
-                ClearNewScores();
-            }
-            else
-            {
-                //check if the amout scored is better or worse
-                if (newScores[0, 0] < Scores[2, 0])
+                else
                 {
-                    //Now check if the percentage correct is greater than 50% to stop spamers
-                    if (newScores[0, 0] / newScores[0, 1] > 0.5f)
+                    //check if the amout scored is better or worse
+                    if (newScores[0, 0] > Scores[2, 0])
                     {
-                        Scores[2, 0] = newScores[0, 0];
-                        Scores[2, 1] = newScores[0, 1];
-                        ClearNewScores();
+                        //Now check if the percentage correct is greater than 50% to stop spamers
+                        if (newScores[0, 0] / newScores[0, 1] > 0.5f)
+                        {
+                            Scores[2, 0] = newScores[0, 0];
+                            Scores[2, 1] = newScores[0, 1];
+                            ClearNewScores();
 
+                        }
+                        else
+                        {
+                            Debug.Log("no Change");
+                            ClearNewScores();
+                        }
                     }
                     else
                     {
                         Debug.Log("no Change");
                         ClearNewScores();
+
                     }
                 }
-                else
-                {
-                    Debug.Log("no Change");
-                    ClearNewScores();
-
-                }
             }
+            else
+            {
+                // does nothing due to not a valid level
+                Debug.Log("Input Scoring gameobject not valid");
+            }
+            */
         }
-        else
-        {
-            // does nothing due to not a valid level
-            Debug.Log("Input Scoring gameobject not valid");
-        }
-    }
 
     void ClearNewScores()
     {

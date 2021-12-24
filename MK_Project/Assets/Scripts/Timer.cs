@@ -56,8 +56,9 @@ public class Timer : MonoBehaviour
         displayedTimer.text = currentTimer.ToString("00" + " Seconds");
     }
 
-    public void ActivateTimer(bool insertedBool)
+    public void ActivateTimer(Text thisTimer, bool insertedBool)
     {
+        displayedTimer = thisTimer;
         displayTimer = insertedBool;
         timerRunning = insertedBool;
         displayedTimer.gameObject.SetActive(insertedBool);

@@ -2771,6 +2771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e686adfac1e244fbca16c90ebf1f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LB: {fileID: 2113334819}
+  thisTimer: {fileID: 1808134071}
   questionText: {fileID: 429999964}
   currentQuestion: 0
   answer: {fileID: 212420937}
@@ -3143,6 +3145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e686adfac1e244fbca16c90ebf1f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LB: {fileID: 2113334819}
+  thisTimer: {fileID: 952151429}
   questionText: {fileID: 1844260372}
   currentQuestion: 0
   answer: {fileID: 437360386}
@@ -4678,6 +4682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e686adfac1e244fbca16c90ebf1f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LB: {fileID: 2113334819}
+  thisTimer: {fileID: 1638663193}
   questionText: {fileID: 120309103}
   currentQuestion: 0
   answer: {fileID: 560940758}
@@ -4788,7 +4794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1638663192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6675,7 +6681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19df0a2a85b2c164e96c0716f10b79bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LB: {fileID: 0}
+  LB: {fileID: 2113334819}
   Questions: []
   Answers: []
   amountCompleated: 0

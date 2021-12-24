@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     ScoreHolder scoreHolder;
     public LeaderBoard LB;
     Timer timer;
+    public Text thisTimer;
     public enum colours
     {
         Red,
@@ -53,7 +54,7 @@ public class Spawner : MonoBehaviour
         UpdatedAnswer();
 
         // setup timer to start
-        timer.ActivateTimer(true);
+        timer.ActivateTimer(thisTimer, true);
     }
 
     public void ContinueGame()
@@ -115,7 +116,7 @@ public class Spawner : MonoBehaviour
     public void EndOfGame()
     {
         /// turns timer off and resets for next game
-        timer.ActivateTimer(false);
+        timer.ActivateTimer(thisTimer, false);
 
         /// Sets the parent of QuestionText to inactive
         questionText.gameObject.transform.parent.gameObject.SetActive(false);
@@ -133,12 +134,13 @@ public class Spawner : MonoBehaviour
 
         scoreHolder.CheckQA();
 
-        LB.LevelComplete(this.gameObject);
-
         /// Sets the Ending screen to active
         endScreen.SetActive(true);
 
         compleatedText.text = ("You completed " + scoreHolder.amountCompleated.ToString());
         correctText.text = ("You got " + scoreHolder.amountCorrect.ToString() + " correct");
+
+        /// Currently causing errors will require break point testing
+        LB.LevelComplete(this);
     }
 }   
