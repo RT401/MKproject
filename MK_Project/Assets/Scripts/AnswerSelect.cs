@@ -18,7 +18,7 @@ public class AnswerSelect : MonoBehaviour
     public void OnSelect(GameObject go)
     {
         /// Save the question and answer to a list to check at end for score (saved in 2 different list (one for question one for answer))
-        scoreHolder.Questions.Add(gameSpawner.currentQuestion.ToString());
+        scoreHolder.Questions.Add(gameSpawner.currentAnswer.ToString());
         scoreHolder.Answers.Add(go.transform.GetComponentInChildren<Text>().text);
 
         gameSpawner.ContinueGame();

@@ -11,16 +11,15 @@ public class Spawner : MonoBehaviour
     public Text thisTimer;
     public enum colours
     {
-        Red,
-        Blue,
-        Yellow,
-        Orange,
         Black,
-        White,
-        Pink,
-        Purple,
+        Blue,
+        Cyan,
+        Gray,
         Green,
-        Brown
+        Magenta,
+        Red,
+        White,
+        Yellow
     }
 
     /// Questions
@@ -29,6 +28,7 @@ public class Spawner : MonoBehaviour
     Color currentColour;
 
     /// Answers
+    public colours currentAnswer;
     public GameObject answer;
     public GameObject answerPrefab;
     public int amountOfAnswers = 0;
@@ -76,12 +76,55 @@ public class Spawner : MonoBehaviour
     public void UpdatedQuestion()
     {
         // randomises the colours enum to randomise the result
-        currentQuestion = (colours)Random.Range(0, 10);
+        currentQuestion = (colours)Random.Range(0, 9);
         questionText.text = currentQuestion.ToString();
 
         // randomises the background colour
-        currentColour = new Color(Random.value, Random.value, Random.value, 1f);
-        questionText.color = currentColour;
+        SwitchBackgroundColour(Random.Range(0, 9));
+    }
+
+    public void SwitchBackgroundColour(int randomNumber)
+    {
+        /// this function will switch the background colour of the answer to one of the selected colours and will save the current answer as it
+        switch (randomNumber)
+        {
+            case 0:
+                questionText.color = Color.black;
+                currentAnswer = colours.Black;
+                break;
+            case 1:
+                questionText.color = Color.blue;
+                currentAnswer = colours.Black;
+                break;
+            case 2:
+                questionText.color = Color.cyan;
+                currentAnswer = colours.Black;
+                break;
+            case 3:
+                questionText.color = Color.grey;
+                currentAnswer = colours.Black;
+                break;
+            case 4:
+                questionText.color = Color.green;
+                currentAnswer = colours.Black;
+                break;
+            case 5:
+                questionText.color = Color.magenta;
+                currentAnswer = colours.Black;
+                break;
+            case 6:
+                questionText.color = Color.red;
+                currentAnswer = colours.Black;
+                break;
+            case 7:
+                questionText.color = Color.white;
+                currentAnswer = colours.Black; 
+                break;
+            case 8:
+                questionText.color = Color.yellow;
+                currentAnswer = colours.Black;
+                break;
+        }
     }
 
     public void UpdatedAnswer()
@@ -95,12 +138,12 @@ public class Spawner : MonoBehaviour
         {
             /// randomise the text that appears in each answer box & ensure that one is always the correct answer
             if (i == randomAnswerLocation)
-                answerPrefab.transform.GetComponentInChildren<Text>().text = (currentQuestion.ToString());
+                answerPrefab.transform.GetComponentInChildren<Text>().text = (currentAnswer.ToString());
             else
             {
                 /// Failsafe to ensure that both answers are not the same
-                colours randomAnswer = currentQuestion;
-                while (randomAnswer == currentQuestion) 
+                colours randomAnswer = currentAnswer;
+                while (randomAnswer == currentAnswer) 
                     randomAnswer = (colours)Random.Range(0, 9);
                 answerPrefab.transform.GetComponentInChildren<Text>().text = randomAnswer.ToString();
             }
