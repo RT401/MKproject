@@ -2775,6 +2775,7 @@ MonoBehaviour:
   thisTimer: {fileID: 1808134071}
   questionText: {fileID: 429999964}
   currentQuestion: 0
+  currentAnswer: 0
   answer: {fileID: 212420937}
   answerPrefab: {fileID: 5434400451312957381, guid: 5408d3dc51b653c449dfc8d76c588a15, type: 3}
   amountOfAnswers: 4
@@ -2815,7 +2816,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.8
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3082,7 +3083,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.8
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3149,6 +3150,7 @@ MonoBehaviour:
   thisTimer: {fileID: 952151429}
   questionText: {fileID: 1844260372}
   currentQuestion: 0
+  currentAnswer: 0
   answer: {fileID: 437360386}
   answerPrefab: {fileID: 5434400451312957381, guid: 5408d3dc51b653c449dfc8d76c588a15, type: 3}
   amountOfAnswers: 0
@@ -4686,6 +4688,7 @@ MonoBehaviour:
   thisTimer: {fileID: 1638663193}
   questionText: {fileID: 120309103}
   currentQuestion: 0
+  currentAnswer: 0
   answer: {fileID: 560940758}
   answerPrefab: {fileID: 5434400451312957381, guid: 5408d3dc51b653c449dfc8d76c588a15, type: 3}
   amountOfAnswers: 3
@@ -4726,7 +4729,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.8
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4988,7 +4991,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.8
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
