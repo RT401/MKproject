@@ -94,41 +94,42 @@ public class Spawner : MonoBehaviour
                 break;
             case 1:
                 questionText.color = Color.blue;
-                currentAnswer = colours.Black;
+                currentAnswer = colours.Blue;
                 break;
             case 2:
                 questionText.color = Color.cyan;
-                currentAnswer = colours.Black;
+                currentAnswer = colours.Cyan;
                 break;
             case 3:
                 questionText.color = Color.grey;
-                currentAnswer = colours.Black;
+                currentAnswer = colours.Gray;
                 break;
             case 4:
                 questionText.color = Color.green;
-                currentAnswer = colours.Black;
+                currentAnswer = colours.Green;
                 break;
             case 5:
                 questionText.color = Color.magenta;
-                currentAnswer = colours.Black;
+                currentAnswer = colours.Magenta;
                 break;
             case 6:
                 questionText.color = Color.red;
-                currentAnswer = colours.Black;
+                currentAnswer = colours.Red;
                 break;
             case 7:
                 questionText.color = Color.white;
-                currentAnswer = colours.Black; 
+                currentAnswer = colours.White; 
                 break;
             case 8:
                 questionText.color = Color.yellow;
-                currentAnswer = colours.Black;
+                currentAnswer = colours.Yellow;
                 break;
         }
     }
 
     public void UpdatedAnswer()
     {
+        //string[] answers = new string[];
         /// randomise which instanciated object spawns the correct answer
         /// requires the +1 because of Random.Range going from the first value to -1 of second value
         int randomAnswerLocation = Random.Range(1, (amountOfAnswers + 1));
