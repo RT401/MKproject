@@ -9,12 +9,13 @@ public class Spawner : MonoBehaviour
     public LeaderBoard LB;
     Timer timer;
     public Text thisTimer;
+
     public enum colours
     {
         Black,
         Blue,
         Cyan,
-        Gray,
+        Grey,
         Green,
         Magenta,
         Red,
@@ -102,7 +103,7 @@ public class Spawner : MonoBehaviour
                 break;
             case 3:
                 questionText.color = Color.grey;
-                currentAnswer = colours.Gray;
+                currentAnswer = colours.Grey;
                 break;
             case 4:
                 questionText.color = Color.green;
@@ -129,7 +130,8 @@ public class Spawner : MonoBehaviour
 
     public void UpdatedAnswer()
     {
-        colours[] answers = new colours[amountOfAnswers];
+        List<colours> allTempAnswers = new List<colours>();
+        allTempAnswers.Add(currentAnswer);
 
         /// randomise which instanciated object spawns the correct answer
         /// requires the +1 because of Random.Range going from the first value to -1 of second value
@@ -142,16 +144,16 @@ public class Spawner : MonoBehaviour
             if (i == randomAnswerLocation)
             {
                 answerPrefab.transform.GetComponentInChildren<Text>().text = (currentAnswer.ToString());
-                answers[i] = currentAnswer;
             }
             else
             {
                 /// Failsafe to ensure that both answers are not the same
                 colours randomAnswer = currentAnswer;
-                while (randomAnswer == currentAnswer && CheckArray(answers, randomAnswer)) ;
+                while (randomAnswer == currentAnswer || allTempAnswers.Contains(randomAnswer))
                     randomAnswer = (colours)Random.Range(0, 9);
+
+                allTempAnswers.Add(randomAnswer);
                 answerPrefab.transform.GetComponentInChildren<Text>().text = randomAnswer.ToString();
-                answers[i] = currentAnswer;
             }
 
             // lets the instantiated object know what spawner it belongs to
@@ -160,32 +162,6 @@ public class Spawner : MonoBehaviour
             //instantiate the object
             Instantiate(answerPrefab, answer.transform);
         }
-    }
-
-    public bool CheckArray(colours[] colours, colours coloursToCheck)
-    {
-        int tempTF = 0;
-
-        if (colours.Length == 0)
-            return false;
-
-        foreach(colours co in colours)
-        {
-            if(co != coloursToCheck)
-            {
-                tempTF++;
-            }
-            else 
-            { 
-                break;
-            }
-        }
-
-        if (tempTF != 0)
-            return true;
-        else
-            return false;
-
     }
 
     public void EndOfGame()
