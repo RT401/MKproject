@@ -129,7 +129,8 @@ public class Spawner : MonoBehaviour
 
     public void UpdatedAnswer()
     {
-        //string[] answers = new string[];
+        colours[] answers = new colours[amountOfAnswers];
+
         /// randomise which instanciated object spawns the correct answer
         /// requires the +1 because of Random.Range going from the first value to -1 of second value
         int randomAnswerLocation = Random.Range(1, (amountOfAnswers + 1));
@@ -139,14 +140,18 @@ public class Spawner : MonoBehaviour
         {
             /// randomise the text that appears in each answer box & ensure that one is always the correct answer
             if (i == randomAnswerLocation)
+            {
                 answerPrefab.transform.GetComponentInChildren<Text>().text = (currentAnswer.ToString());
+                answers[i] = currentAnswer;
+            }
             else
             {
                 /// Failsafe to ensure that both answers are not the same
                 colours randomAnswer = currentAnswer;
-                while (randomAnswer == currentAnswer) 
+                while (randomAnswer == currentAnswer && CheckArray(answers, randomAnswer)) ;
                     randomAnswer = (colours)Random.Range(0, 9);
                 answerPrefab.transform.GetComponentInChildren<Text>().text = randomAnswer.ToString();
+                answers[i] = currentAnswer;
             }
 
             // lets the instantiated object know what spawner it belongs to
@@ -155,6 +160,32 @@ public class Spawner : MonoBehaviour
             //instantiate the object
             Instantiate(answerPrefab, answer.transform);
         }
+    }
+
+    public bool CheckArray(colours[] colours, colours coloursToCheck)
+    {
+        int tempTF = 0;
+
+        if (colours.Length == 0)
+            return false;
+
+        foreach(colours co in colours)
+        {
+            if(co != coloursToCheck)
+            {
+                tempTF++;
+            }
+            else 
+            { 
+                break;
+            }
+        }
+
+        if (tempTF != 0)
+            return true;
+        else
+            return false;
+
     }
 
     public void EndOfGame()
