@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3e5399bd195de7649b874f58c1b9f8a3, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.67932403, g: 0.73286986, b: 0.8046716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 120309101}
   - component: {fileID: 120309102}
   - component: {fileID: 120309103}
+  - component: {fileID: 120309104}
   m_Layer: 5
   m_Name: QuestionText
   m_TagString: Untagged
@@ -444,6 +445,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &120309104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120309100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.1, y: 0.1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &122448166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1702,7 @@ GameObject:
   - component: {fileID: 429999962}
   - component: {fileID: 429999963}
   - component: {fileID: 429999964}
+  - component: {fileID: 429999965}
   m_Layer: 5
   m_Name: QuestionText
   m_TagString: Untagged
@@ -1754,6 +1771,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &429999965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429999961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.1, y: 0.1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &437360386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,7 +2803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e686adfac1e244fbca16c90ebf1f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LB: {fileID: 2113334819}
+  LB: {fileID: 0}
   thisTimer: {fileID: 1808134071}
   questionText: {fileID: 429999964}
   currentQuestion: 0
@@ -2899,9 +2931,9 @@ RectTransform:
   m_Father: {fileID: 972874836}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 336.33823, y: 132}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -100, y: -50}
   m_SizeDelta: {x: 105.3237, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952151429
@@ -3146,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e686adfac1e244fbca16c90ebf1f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LB: {fileID: 2113334819}
+  LB: {fileID: 0}
   thisTimer: {fileID: 952151429}
   questionText: {fileID: 1844260372}
   currentQuestion: 0
@@ -4684,7 +4716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e686adfac1e244fbca16c90ebf1f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LB: {fileID: 2113334819}
+  LB: {fileID: 0}
   thisTimer: {fileID: 1638663193}
   questionText: {fileID: 120309103}
   currentQuestion: 0
@@ -4812,9 +4844,9 @@ RectTransform:
   m_Father: {fileID: 1610325030}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 336.33823, y: 132}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -100, y: -50}
   m_SizeDelta: {x: 105.3237, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638663193
@@ -5403,9 +5435,9 @@ RectTransform:
   m_Father: {fileID: 871626626}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 336.33823, y: 132}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -100, y: -50}
   m_SizeDelta: {x: 105.3237, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808134071
@@ -5461,6 +5493,7 @@ GameObject:
   - component: {fileID: 1844260374}
   - component: {fileID: 1844260373}
   - component: {fileID: 1844260372}
+  - component: {fileID: 1844260375}
   m_Layer: 5
   m_Name: QuestionText
   m_TagString: Untagged
@@ -5529,6 +5562,21 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 180, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1844260375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844260371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.1, y: 0.1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1862764580
 GameObject:
   m_ObjectHideFlags: 0
@@ -6684,7 +6732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19df0a2a85b2c164e96c0716f10b79bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LB: {fileID: 2113334819}
+  LB: {fileID: 0}
   Questions: []
   Answers: []
   amountCompleated: 0
