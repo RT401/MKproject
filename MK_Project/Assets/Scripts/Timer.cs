@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public bool timerRunning = false;
 
     // Timer values
-    public float maxTimer = 60;
+    public float maxTimer = 15;
     public float currentTimer;
 
     // Timer spawn location
