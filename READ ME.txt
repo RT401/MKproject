@@ -1,0 +1,28 @@
+READ ME
+
+Repo link - https://github.com/RT401/MKproject
+
+current builds are in the folders inside,
+
+To download the Android_APK_File ensure that device debugging is on
+If usb debugging is not enable for these steps
+	Open the Settings app.
+	Select System.
+	Scroll to the bottom and select About phone.
+	Scroll to the bottom and tap Build number 7 times.
+	Return to the previous screen to find Developer options near the bottom.
+	Scroll down and enable USB debugging.
+once that is done plug in your device to the pc
+Download the android_APK_File document
+go into download(or whereever the downloded file was placed) and unzip the file
+Drag and drop the item in Android_APK_File from your downloads file into your plugged in devices file
+then on your device go into documents and find the Android_APK_file and click to install it,
+allow anything required to install 
+then after that it should be installed onto the home screen, double click on it to run the game
+
+To download and run the PC build
+download the PC_Build file
+locate the file on your computer
+unzip the file
+and click on the MKProject.exe
+

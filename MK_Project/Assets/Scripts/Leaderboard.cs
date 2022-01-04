@@ -109,119 +109,40 @@ public class LeaderBoard : MonoBehaviour
         */
 
         /// Main way to update scores baised on a set amount of parameters
+        
+        /// sets up whatever level is completed
+        int level = 0;
 
-        //check the name of the gameobect to decide which score to check
         if (name == "Easy")
-        {
-            // Ensure that the score isnt 2.5x higher than the max time allowed
-            if (newScores[0, 1] <= (timer.maxTimer * 2.5))
-            {
-                // checks if the array is either null or 0's
-                if (Scores[0, 0] == null && Scores[0, 1] == null || Scores[0, 0] == 0 && Scores[0, 1] == 0)
-                {
-                    Scores[0, 0] = newScores[0, 0];
-                    Scores[0, 1] = newScores[0, 1];
-                    ClearNewScores();
-                }
-                else
-                {
-                    //check if the new scores amount completed then amount correct was higher than the old scores
-                    // first checks if the new amount correct is greater than old amount correct
-                    // if that is true and the amount completed is higher or the same then will go into this if statement
-                    if (newScores[0, 0] > Scores[0, 0] && newScores[0, 1] >= Scores[0, 1])
-                    {
-                        //Now check if the percentage correct is greater than 50% to stop spamers
-                        if (newScores[0, 0] / newScores[0, 1] > 0.5f)
-                        {
-                            Scores[0, 0] = newScores[0, 0];
-                            Scores[0, 1] = newScores[0, 1];
-                            ClearNewScores();
-                        }
-                        else
-                        {
-                            Debug.Log("no Change");
-                            ClearNewScores();
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("no Change");
-                        ClearNewScores();
-                    }
-                }
-            }
-        }
+            level = 0;
         else if (name == "Normal")
-        {
-            // Ensure that the score isnt 2.5x higher than the max time allowed
-            if (newScores[0, 1] <= (timer.maxTimer * 2.5))
-            {
-                // checks if the array is either null or 0's
-                if (Scores[1, 0] == null && Scores[1, 1] == null || Scores[1, 0] == 0 && Scores[1, 1] == 0)
-                {
-                    Scores[1, 0] = newScores[0, 0];
-                    Scores[1, 1] = newScores[0, 1];
-                    ClearNewScores();
-                }
-                else
-                {
-                    //check if the new scores amount completed then amount correct was higher than the old scores
-                    // first checks if the new amount correct is greater than old amount correct
-                    // if that is true and the amount completed is higher or the same then will go into this if statement
-                    if (newScores[0, 0] > Scores[1, 0] && newScores[0, 1] >= Scores[1, 1])
-                    {
-                        //Now check if the percentage correct is greater than 50% to stop spamers
-                        if (newScores[0, 0] / newScores[0, 1] > 0.5f)
-                        {
-                            Scores[1, 0] = newScores[0, 0];
-                            Scores[1, 1] = newScores[0, 1];
-                            ClearNewScores();
-                        }
-                        else
-                        {
-                            Debug.Log("no Change");
-                            ClearNewScores();
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("no Change");
-                        ClearNewScores();
-                    }
-                }
-            }
-        }
+            level = 1;
         else if (name == "Hard")
+            level = 2;
+
+        // Ensure that the score isnt 2.5x higher than the max time allowed
+        if (newScores[0, 1] <= (timer.maxTimer * 2.5))
         {
-            // Ensure that the score isnt 2.5x higher than the max time allowed
-            if (newScores[0, 1] <= (timer.maxTimer * 2.5))
+            // checks if the array is either null or 0's
+            if (Scores[level, 0] == null && Scores[level, 1] == null || Scores[level, 0] == 0 && Scores[level, 1] == 0)
             {
-                // checks if the array is either null or 0's
-                if (Scores[2, 0] == null && Scores[2, 1] == null || Scores[2, 0] == 0 && Scores[2, 1] == 0)
+                Scores[level, 0] = newScores[0, 0];
+                Scores[level, 1] = newScores[0, 1];
+                ClearNewScores();
+            }
+            else
+            {
+                //check if the new scores amount completed then amount correct was higher than the old scores
+                // first checks if the new amount correct is greater than old amount correct
+                // if that is true and the amount completed is higher or the same then will go into this if statement
+                if (newScores[0, 0] > Scores[level, 0] && newScores[0, 1] >= Scores[level, 1])
                 {
-                    Scores[2, 0] = newScores[0, 0];
-                    Scores[2, 1] = newScores[0, 1];
-                    ClearNewScores();
-                }
-                else
-                {
-                    //check if the new scores amount completed then amount correct was higher than the old scores
-                    // first checks if the new amount correct is greater than old amount correct
-                    // if that is true and the amount completed is higher or the same then will go into this if statement
-                    if (newScores[0, 0] > Scores[2, 0] && newScores[0, 1] >= Scores[2, 1])
+                    //Now check if the percentage correct is greater than 50% to stop spamers
+                    if (newScores[0, 0] / newScores[0, 1] > 0.5f)
                     {
-                        //Now check if the percentage correct is greater than 50% to stop spamers
-                        if (newScores[0, 0] / newScores[0, 1] > 0.5f)
-                        {
-                            Scores[2, 0] = newScores[0, 0];
-                            Scores[2, 1] = newScores[0, 1];
-                            ClearNewScores();
-                        }
-                        else
-                        {
-                            Debug.Log("no Change");
-                            ClearNewScores();
-                        }
+                        Scores[level, 0] = newScores[0, 0];
+                        Scores[level, 1] = newScores[0, 1];
+                        ClearNewScores();
                     }
                     else
                     {
@@ -229,8 +150,13 @@ public class LeaderBoard : MonoBehaviour
                         ClearNewScores();
                     }
                 }
+                else
+                {
+                    Debug.Log("no Change");
+                    ClearNewScores();
+                }
             }
-        }
+        } 
     }
 
     void ClearNewScores()
